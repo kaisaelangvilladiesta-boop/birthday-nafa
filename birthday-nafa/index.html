@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Selamat Ulang Tahun Sayang</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="heart" viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-11a4.6 4.6 0 0 1 8-3 4.6 4.6 0 0 1 8 3c0 5.800-8 11-8 11z" fill="currentColor"/></symbol>
+  <symbol id="cat" viewBox="0 0 64 64"><path d="M10 30 12 8l15 11a26 26 0 0 1 10 0L52 8l2 22c3 16-9 26-22 26S7 46 10 30z" fill="#fff"/><path d="M14 16l3 9m33-9-3 9" stroke="#f4b6cf" stroke-width="3" stroke-linecap="round"/><circle cx="23" cy="34" r="3" fill="#1b2a5c"/><circle cx="41" cy="34" r="3" fill="#1b2a5c"/><path d="M29 41q3 3 6 0M32 39v2" stroke="#1b2a5c" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="17" cy="41" r="3.500" fill="#f9c9dd" opacity=".8"/><circle cx="47" cy="41" r="3.500" fill="#f9c9dd" opacity=".8"/></symbol>
+  <symbol id="fly" viewBox="0 0 40 30"><path d="M20 15C12 0 0 2 3 12s12 8 17 3zm0 0c8-15 20-13 17-3s-12 8-17 3z" fill="currentColor" opacity=".8"/><path d="M20 8v16" stroke="#1b2a5c" stroke-width="1.500"/></symbol>
+  <symbol id="rose" viewBox="0 0 40 40"><g fill="#fff" fill-opacity=".9"><circle cx="20" cy="9" r="7"/><circle cx="31" cy="17" r="7"/><circle cx="27" cy="30" r="7"/><circle cx="13" cy="30" r="7"/><circle cx="9" cy="17" r="7"/></g><circle cx="20" cy="20" r="6" fill="#f4b6cf"/></symbol>
+</svg>
+<div id="sky" aria-hidden="true"></div>
+<div id="glow" aria-hidden="true"></div>
+
+<main>
+<!-- 1 ENVELOPE -->
+<section class="page active" id="envelope">
+  <h1 class="script big">Press the Envelope</h1>
+  <button class="env" id="envBtn" aria-label="Buka amplop">
+    <span class="paper"><span class="script">For Tyak ♡</span></span>
+    <span class="flap"></span><span class="front"></span>
+    <span class="seal"><svg><use href="#heart"/></svg></span>
+  </button>
+  <p class="hint">tap to continue</p>
+  <svg class="cat corner"><use href="#cat"/></svg>
+</section>
+
+<!-- 2 BIRTHDAY -->
+<section class="page" id="birthday">
+  <div class="card glass center">
+    <svg class="deco rose r1"><use href="#rose"/></svg><svg class="deco rose r2"><use href="#rose"/></svg>
+    <svg class="deco fly f1"><use href="#fly"/></svg>
+    <svg class="cat sm"><use href="#cat"/></svg>
+    <h2 class="script huge st s1">Happy 18th Birthday, <span data-name></span>!</h2>
+    <p class="date st s2" data-date></p>
+    <button class="btn st s3" data-go="menu">OPEN YOUR SURPRISE</button>
+  </div>
+</section>
+
+<!-- 3 MENU -->
+<section class="page" id="menu">
+  <h2 class="script big">Choose the Surprise</h2>
+  <div class="grid4">
+    <button class="tile" data-go="journey"><span class="ic">📷</span><b>Journey</b><small>Galeri foto</small></button>
+    <button class="tile" data-go="moment"><span class="ic">💌</span><b>Moment</b><small>Surat untukmu</small></button>
+    <button class="tile" data-go="playlist"><span class="ic">💿</span><b>Playlist</b><small>Musik</small></button>
+    <button class="tile" data-go="gift"><span class="ic">🎁</span><b>Gift</b><small>Hadiah</small></button>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section class="page scroll" id="journey">
+  <button class="btn back" data-go="menu" aria-label="Kembali ke menu">← BACK</button>
+  <h2 class="script big">Gallery of Memories</h2>
+  <div class="gallery" id="gallery"></div>
+</section>
+
+<!-- MOMENT -->
+<section class="page scroll" id="moment">
+  <button class="btn back" data-go="menu" aria-label="Kembali ke menu">← BACK</button>
+  <article class="letter">
+    <svg class="deco rose r1"><use href="#rose"/></svg><svg class="deco rose r2"><use href="#rose"/></svg>
+    <h2 class="script big dark">A Letter for Tyaak</h2>
+    <p class="to">Untuk <b data-name></b></p>
+    <figure class="polaroid small"><img data-photo="letter" alt=""></figure>
+    <div id="letterBody"></div>
+    <p class="sign" id="sign"></p>
+  </article>
+</section>
+
+<!-- PLAYLIST -->
+<section class="page scroll" id="playlist">
+  <button class="btn back" data-go="menu" aria-label="Kembali ke menu">← BACK</button>
+  <h2 class="script big">Music for Nafa</h2>
+  <div class="player glass">
+    <div class="vinyl" id="vinyl"><img data-photo="cover" alt=""><i></i></div>
+    <div class="eq" id="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+    <h3 id="trTitle"></h3><p id="trArtist"></p>
+    <input type="range" id="seek" min="0" max="100" value="0" step="0.1" aria-label="Progress lagu">
+    <div class="times"><span id="cur">0:00</span><span id="dur">0:00</span></div>
+    <div class="ctrl">
+      <button class="round" id="loop" aria-label="Ulangi lagu" aria-pressed="false">🔁</button>
+      <button class="round big" id="play" aria-label="Play">▶</button>
+      <label class="vol">🔊 <input type="range" id="vol" min="0" max="1" step="0.01" value="0.8" aria-label="Volume"></label>
+    </div>
+    <p class="note" id="audioNote"></p>
+    <audio id="audio" preload="metadata"></audio>
+  </div>
+</section>
+
+<!-- GIFT -->
+<section class="page" id="gift">
+  <button class="btn back" data-go="menu" aria-label="Kembali ke menu">← BACK</button>
+  <div class="giftwrap">
+    <button class="box" id="box" aria-label="Buka hadiah"><span class="lid"></span><span class="body"></span><span class="rib"></span></button>
+    <p class="hint" id="giftHint">tap the gift</p>
+    <div class="msg glass" id="giftMsg" hidden>
+      <p id="giftText"></p>
+      <button class="btn small" id="moreBtn">Ada satu lagi 💌</button>
+      <p id="extra" class="extra" hidden></p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<dialog id="lb"><button class="btn small" id="lbClose" aria-label="Tutup">✕</button><img id="lbImg" alt=""><p id="lbCap"></p></dialog>
+<script src="config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
